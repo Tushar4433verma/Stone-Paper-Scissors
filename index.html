@@ -5,20 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock,Paper,Scissors Game</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Add your CSS styles here */
+        .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) perspective(1000px);
+        background-color: #ffffff;
+        padding: 15px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        transition: transform 0.5s;
+    }
+
+    .popup.show {
+        display: block;
+        transform: translate(-50%, -50%) perspective(1000px) rotateY(10deg) scale(1);
+    }
+
+    .popup-content {
+        text-align: center;
+    }
+
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor:pointer;
+    }
+    #popup-content{
+        height: 250px;
+        width: 450px;
+        background-color: #000000;
+        color: #ffffff;
+        font-size: 2rem;
+    }
+    #popup-content:hover{
+        opacity: 0.9;
+    }
+    .attempts{
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+      /* Responsive styling */
+      @media only screen and (max-width: 600px) {
+        .popup {
+            max-width: 90%;
+            padding: 10px;
+        }
+        #popup-content{
+            height: 190px;
+            width:290px;
+        }
+    }
+    </style>
 </head>
 <body>
-
+ 
     <h1>Rock Paper Scissors</h1>
    <!-- <a href="http://en.wikipedia.org/wiki/Rock_paper_scissors" target="_blank" rel="noopener noreferrer">Read About Game</a> -->
 
     
+        <!-- pop up -->
+        <div id="contents">
+            <!-- Your content goes here -->
+        </div>
+        <div id="popup" class="popup">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <div id="popup-content" class="popup-content">
+                        <!-- Pop-up content goes here -->
+                    </div>
+        </div>
+
+        <!--attempts left -->
+
+        <div class="attempts">
+            <h2 id="h"></h2>
+        </div>
+
+
     <!-- Choices -->
     <div class="choices">
-        <div class="choice" id="stone">
+        <div class="choice" id="Stone">
             <img src="./images/rock.png" alt="Slow Internet!!">
         </div>
 
-        <div class="choice" id="paper">
+        <div class="choice" id="Paper">
             <img src="./images/paper.png" alt="Slow Internet!!">
         </div>
 
@@ -44,7 +121,6 @@
     <div class="msg">
         <p id="content">Play your move!!</p>
     </div>
-
 
 <script src="./app.js"></script>    
 </body>
